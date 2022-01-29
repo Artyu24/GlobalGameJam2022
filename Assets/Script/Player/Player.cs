@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
             isLeft = false;
             Debug.Log("SWIPE RIGHT");
         }
+
         else if (swipeControls.tap)
         {
             //Debug.Log("Changement de couleur ?");
