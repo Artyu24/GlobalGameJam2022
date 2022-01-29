@@ -6,7 +6,7 @@ using UnityEngine;
 public class Swipe : MonoBehaviour
 {
     private bool _tap, _swipeLeft, _swipeRight;
-    private bool isDragging;
+    private bool _isDragging;
     private Vector2 _startTouch, _swipeDelta;
 
     private void Update()
@@ -18,12 +18,12 @@ public class Swipe : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _tap = true;
-            isDragging = true;
+            _isDragging = true;
             _startTouch = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            isDragging = false;
+            _isDragging = false;
             Reset();
         }
         #endregion
@@ -92,6 +92,12 @@ public class Swipe : MonoBehaviour
 
     public Vector2 swipeDelta { get { return _swipeDelta; } }
     public bool swipeLeft { get { return _swipeLeft; } }
+
+    public bool isDragging
+    {
+        get { return _isDragging; }
+        set { _isDragging = value; }
+    }
     public bool tap { get { return _tap; } }
     public bool swipeRight { get { return _swipeRight; } }
 
