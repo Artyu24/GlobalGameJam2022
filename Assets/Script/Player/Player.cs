@@ -30,12 +30,14 @@ public class Player : MonoBehaviour
             
             isLeft = true;
             Debug.Log("SWIPE LEFT");
+            GameManager.Instance.SwitchLine();
         }
         else if (swipeControls.swipeRight && isLeft)
         {
             dir = rightPosition.transform.position;
             isLeft = false;
             Debug.Log("SWIPE RIGHT");
+            GameManager.Instance.SwitchLine();
         }
 
         else if (swipeControls.tap && !swipeControls.isDragging)
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, dir, speedTravel);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         TakeDamage(1);
         Destroy(other.gameObject);

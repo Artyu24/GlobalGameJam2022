@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         accel = speed * 0.2f;
 
         blackMaterial.SetColor("_GlowColor", Color.black);
-        blackMaterial.SetColor("_BaseColor", Color.white);
+        blackMaterial.SetColor("_BaseColor", Color.black);
         whiteMaterial.SetColor("_GlowColor", Color.white);
         whiteMaterial.SetColor("_BaseColor", Color.black);
     }
@@ -113,14 +113,14 @@ public class GameManager : MonoBehaviour
 
     private void SpawnWhiteCube(GameObject spawnPosition)
     {
-        GameObject _whiteCube = Instantiate(whiteCube, spawnPosition.transform.position, Quaternion.identity);
+        GameObject _whiteCube = Instantiate(whiteCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
         if (isWhiteSide)
             _whiteCube.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void SpawnBlackCube(GameObject spawnPosition)
     {
-        GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity);
+        GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
         if (!isWhiteSide)
             _blackCube.GetComponent<BoxCollider2D>().enabled = false;
     }
