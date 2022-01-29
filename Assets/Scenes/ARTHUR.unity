@@ -419,14 +419,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ab996d48ae4f244a24438f0604f88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftCube_1: {fileID: 0}
-  rightCube_1: {fileID: 0}
-  timeBetweenThem_1: 0
-  leftCube_2: {fileID: 0}
-  rightCube_2: {fileID: 0}
-  timeBetweenThem_2: 0
-  leftCube_3: {fileID: 0}
-  rightCube_3: {fileID: 0}
+  listPatern:
+  - leftCube: {fileID: 1098246421785167659, guid: 01b6f6c446c62004fb588cc36915befb, type: 3}
+    rightCube: {fileID: 4128944868904251677, guid: b65fecee5c2135949a3d0af8e53f203b, type: 3}
+    timeBetweenThem: 0
+  - leftCube: {fileID: 4128944868904251677, guid: b65fecee5c2135949a3d0af8e53f203b, type: 3}
+    rightCube: {fileID: 0}
+    timeBetweenThem: 1
+  - leftCube: {fileID: 0}
+    rightCube: {fileID: 1098246421785167659, guid: 01b6f6c446c62004fb588cc36915befb, type: 3}
+    timeBetweenThem: 0
 --- !u!4 &1885439982
 Transform:
   m_ObjectHideFlags: 0
