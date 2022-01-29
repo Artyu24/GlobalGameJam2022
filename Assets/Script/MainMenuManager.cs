@@ -21,6 +21,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void Credits()
     {
-        créditsPanel.SetActive(true);
+        if (créditsPanel.activeInHierarchy)
+        {
+            créditsPanel.SetActive(false);
+        }
+        else
+        {
+            créditsPanel.SetActive(true);
+        }
     }
 }

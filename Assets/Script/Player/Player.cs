@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, dir, speedTravel);
+
+        if (health <= 0)
+        {
+            GameManager.Instance.isPlayerAlive = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -57,5 +62,6 @@ public class Player : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         health -= _damage;
+        Debug.Log(health);
     }
 }

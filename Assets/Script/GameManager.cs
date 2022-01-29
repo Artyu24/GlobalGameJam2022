@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +38,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
 
+    [Header("Defeat")] 
+    private bool _isPlayerAlive = true;
+    public bool isPlayerAlive
+    {
+        get { return _isPlayerAlive; }
+        set { _isPlayerAlive = value; }
+    }
+    [SerializeField] private GameObject defeatPanel;
+    [SerializeField] private Text defeatScoreText;
+    [SerializeField] private Text defeatHighScoreText;
+
+
     private bool isPaternPlay;
     public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
 
@@ -61,15 +74,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isAccelFinish && speed < accel * 15)
-            StartCoroutine(AccelGame());
+        if (isPlayerAlive)
+        {
+            if (!isAccelFinish && speed < accel * 15)
+                StartCoroutine(AccelGame());
 
 
-        if (!isScoreIncrease)
-            StartCoroutine(ScoreIncrease());
+            if (!isScoreIncrease)
+                StartCoroutine(ScoreIncrease());
 
-        if (!isPaternPlay)
-            PlayRandomPatern();
+            if (!isPaternPlay)
+                PlayRandomPatern();
+        }
+        else
+        {
+            defeatPanel.SetActive(true);
+            defeatHighScoreText.text = PlayerPrefs.GetInt("High Score").ToString();
+            defeatScoreText.text = score.ToString();
+        }
     }
 
     private void PlayRandomPatern()
@@ -154,5 +176,26 @@ public class GameManager : MonoBehaviour
     private GameObject[] WhiteCubeTab()
     {
         return GameObject.FindGameObjectsWithTag("White");
+    }
+
+    public void PlayAgain()
+    {
+        CheckIfHighScore();
+        SceneManager.LoadScene("ARTHUR");
+    }
+
+    public void BackToMenu()
+    {
+        CheckIfHighScore();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private void CheckIfHighScore()
+    {
+        if (PlayerPrefs.GetInt("High Score") != null &&
+            PlayerPrefs.GetInt("High Score") < score)
+        {
+            PlayerPrefs.SetInt("High Score", score);
+        }
     }
 }

@@ -45,7 +45,6 @@ public class Swipe : MonoBehaviour
                 Reset();
             }
         }
-        
 
         #endregion
 
