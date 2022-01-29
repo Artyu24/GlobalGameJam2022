@@ -7,7 +7,6 @@ using Vector3 = UnityEngine.Vector3;
 
 public class MovementCube : MonoBehaviour
 {
-    public float speed;
     private Rigidbody2D rb;
     private Vector3 velocity = Vector3.zero;
 
@@ -18,8 +17,11 @@ public class MovementCube : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float verticalMov = speed * Time.fixedDeltaTime * -1;
+        float verticalMov = GameManager.Instance.GetSpeed * Time.fixedDeltaTime * -1;
         Movement(verticalMov);
+
+        if (transform.position.y < -7)
+            Destroy(gameObject);
     }
 
     private void Movement(float _verticalMov)
