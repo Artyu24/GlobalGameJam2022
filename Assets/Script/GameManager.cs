@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class GameManager : MonoBehaviour
     [Header("Tableau des paternes")]
     [SerializeField] private PaternCube[] tabPatern;
 
+    [Header("Score")]
+    private int score;
+    private int scoreMultiplier;
+    [SerializeField] private Text scoreText;
+
     private bool isPaternPlay;
     public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
 
@@ -38,6 +44,8 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
 
+        scoreMultiplier = 1;
+        scoreText.text = score.ToString();
         timeMultiplier = 1;
         accel = speed * 0.2f;
     }
@@ -114,6 +122,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenAccel);
         Debug.Log("Accel !");
         speed += accel;
+        scoreMultiplier++;
         timeMultiplier -= timeMultiplierDecrease;
         isAccelFinish = false;
     }
@@ -121,7 +130,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator ScoreIncrease()
     {
         isScoreIncrease = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.15f);
+        score += 1 * scoreMultiplier;
+        scoreText.text = score.ToString();
         isScoreIncrease = false;
 
     }
