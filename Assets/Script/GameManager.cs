@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     private int scoreMultiplier;
     [SerializeField] private Text scoreText;
 
+    [Header("Material")] 
+    [SerializeField] private Material blackMaterial;
+    [SerializeField] private Material whiteMaterial;
+
     private bool isPaternPlay;
     public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
 
@@ -48,6 +52,11 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
         timeMultiplier = 1;
         accel = speed * 0.2f;
+
+        blackMaterial.SetColor("_GlowColor", Color.black);
+        blackMaterial.SetColor("_BaseColor", Color.white);
+        whiteMaterial.SetColor("_GlowColor", Color.white);
+        whiteMaterial.SetColor("_BaseColor", Color.black);
     }
 
     private void Update()
