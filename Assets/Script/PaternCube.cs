@@ -34,8 +34,10 @@ public class PaternCube : MonoBehaviour
         {
             GameManager.Instance.SpawnCube("left", layout.leftCube);
             GameManager.Instance.SpawnCube("right", layout.rightCube);
-            yield return new WaitForSeconds(layout.timeBetweenThem + .3f);
+            yield return new WaitForSeconds((layout.timeBetweenThem + .3f) * GameManager.Instance.GetTimeMultiplier);
         }
+
+        yield return new WaitForSeconds(.6f);
         GameManager.Instance.GetIsPaternPlay = false;
     }
 }
