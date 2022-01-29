@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PaternCube[] tabPatern;
 
+    private bool isPaternPlay;
+    public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
+
     private bool isWhiteSide;
 
     private void Awake()
@@ -24,7 +27,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (!isPaternPlay)
+        {
+            PlayRandomPatern();
+        }   
+    }
+
+    private void PlayRandomPatern()
+    {
+        int random = Random.Range(0, tabPatern.Length);
+        Debug.Log("Patern : " + random);
+        tabPatern[random].ActivateCoroutine();
     }
 
     public void SwitchLine()
