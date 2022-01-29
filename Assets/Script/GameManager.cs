@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject leftSpawn, rightSpawn;
     [SerializeField] private GameObject blackCube, whiteCube;
 
+    [SerializeField] private PaternCube[] tabPatern;
+
     private bool isWhiteSide;
 
     private void Awake()
@@ -22,30 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            SpawnBlackCube(leftSpawn);
-        }
         
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SpawnWhiteCube(rightSpawn);
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SpawnBlackCube(rightSpawn);
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            SpawnWhiteCube(leftSpawn);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SwitchLine();
-        }
     }
 
     public void SwitchLine()
@@ -60,6 +39,24 @@ public class GameManager : MonoBehaviour
         foreach (GameObject _whiteCube in WhiteCubeTab())
         {
             _whiteCube.GetComponent<BoxCollider2D>().enabled = !isWhiteSide;
+        }
+    }
+
+    public void SpawnCube(string side, GameObject whichCube)
+    {
+        GameObject spawnObjet = null;
+
+        if (side == "right")
+            spawnObjet = rightSpawn;
+        else if (side == "left")
+            spawnObjet = leftSpawn;
+
+        if (whichCube != null)
+        {
+            if (whichCube.CompareTag("White"))
+                SpawnWhiteCube(spawnObjet);
+            else
+                SpawnBlackCube(spawnObjet);
         }
     }
 

@@ -313,6 +313,7 @@ MonoBehaviour:
   rightSpawn: {fileID: 922804595}
   blackCube: {fileID: 1098246421785167659, guid: 01b6f6c446c62004fb588cc36915befb, type: 3}
   whiteCube: {fileID: 4128944868904251677, guid: b65fecee5c2135949a3d0af8e53f203b, type: 3}
+  tabPatern: []
 --- !u!4 &203387076
 Transform:
   m_ObjectHideFlags: 0
