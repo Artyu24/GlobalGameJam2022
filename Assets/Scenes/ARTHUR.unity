@@ -169,7 +169,7 @@ MonoBehaviour:
   soundButton: {fileID: 1791987279}
   vibrationButton: {fileID: 1617030730}
   muteSprite: {fileID: 21300000, guid: 01e424de53cd27f46ac45b8fdd5d834d, type: 3}
-  unmuteSprite: {fileID: 21300000, guid: 2554267a1af81304caf915f9a3fef094, type: 3}
+  unmuteSprite: {fileID: 21300000, guid: 265218bec95f2fb459b601aa58ddd2c7, type: 3}
   vibrationSprite: {fileID: 21300000, guid: 1baaf32a02d73c44e8e5403e5f992ce3, type: 3}
   vibratioffSprite: {fileID: 21300000, guid: 37c984bbfc2d73045aaba91c541a339c, type: 3}
   cam: {fileID: 68544756}
@@ -2474,7 +2474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &967050409
 RectTransform:
   m_ObjectHideFlags: 0

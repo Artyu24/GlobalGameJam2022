@@ -44,9 +44,17 @@ public class OptionManager : MonoBehaviour
         _instance = this;
     }
 
+    private void Start()
+    {
+        isVibrationEnabled = PlayerPrefs.GetInt("isVibrationEnabled") == 1;
+        SwitchVibration();
+        isSoundEnable = PlayerPrefs.GetInt("isSoundEnable") == 1;
+        SwitchSound();
+    }
+
     public void SwitchSound()
     {
-        if (PlayerPrefs.GetInt("isSoundEnable") == 1)
+        if (isSoundEnable)
         {
             //enable sound
             cam.GetComponent<AudioListener>().enabled = false;
@@ -66,7 +74,7 @@ public class OptionManager : MonoBehaviour
 
     public void SwitchVibration()
     {
-        if (PlayerPrefs.GetInt("isVibrationEnabled") == 1)
+        if (isVibrationEnabled)
         {
             //enable Vibration
             isVibrationEnabled = false;
