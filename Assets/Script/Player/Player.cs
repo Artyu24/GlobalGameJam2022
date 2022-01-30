@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Vector2 dir;
 
     [SerializeField] private int health = 3;
+    [SerializeField] private GameObject[] tabHeart = new GameObject[3];
 
     private void Start()
     {
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         health -= _damage;
+        tabHeart[health].SetActive(false);
         Debug.Log(health);
     }
 }

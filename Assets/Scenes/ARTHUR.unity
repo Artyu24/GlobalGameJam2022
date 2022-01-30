@@ -929,6 +929,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
       propertyPath: speedTravel
       value: 999999
       objectReference: {fileID: 0}
@@ -940,6 +944,18 @@ PrefabInstance:
       propertyPath: rightPosition
       value: 
       objectReference: {fileID: 1108545490}
+    - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
+      propertyPath: tabHeart.Array.data[0]
+      value: 
+      objectReference: {fileID: 1991707850}
+    - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
+      propertyPath: tabHeart.Array.data[1]
+      value: 
+      objectReference: {fileID: 324161760}
+    - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
+      propertyPath: tabHeart.Array.data[2]
+      value: 
+      objectReference: {fileID: 1889046930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
 --- !u!114 &297476979 stripped
@@ -3366,7 +3382,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3838,13 +3854,13 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 6e3da867b35bdff45b86ab991fcadf97, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1856015652
 CanvasRenderer:
