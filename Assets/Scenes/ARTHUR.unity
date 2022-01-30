@@ -457,7 +457,7 @@ MonoBehaviour:
   - {fileID: 180083535}
   - {fileID: 368327822}
   scoreText: {fileID: 332041461}
-  timeBetweenColorChange: 20
+  timeBetweenColorChange: 2
   blackMaterial: {fileID: 2100000, guid: 37a8ea1b2c47727449a5eadb2c147e06, type: 2}
   whiteMaterial: {fileID: 2100000, guid: cf5bf51a146a9c744b59c32c882db820, type: 2}
   player: {fileID: 556802947}

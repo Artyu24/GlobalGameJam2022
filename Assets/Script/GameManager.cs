@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [Header("Material")] 
     [SerializeField] private float timeBetweenColorChange;
     private int previousColor;
+    private Color previousWhiteColor, previousBlackColor;
     private bool isColorSwitching;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
@@ -47,8 +48,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpeedEffectManager speedEffectManager;
     private float accelSpeedEffect;
 
-    [Header("Defeat")] private string blackTag = "Black";
-    [Header("Defeat")] private string whiteTag = "White";
+    [Header("Defeat")] 
+    private string blackTag = "Black";
+    private string whiteTag = "White";
     private string actualTag;
     public string getActualTag { get { return actualTag; } }
     [SerializeField] private GameObject defeatPanel;
@@ -88,6 +90,8 @@ public class GameManager : MonoBehaviour
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
         actualTag = whiteTag;
         previousColor = 5;
+        previousBlackColor = Color.white;
+        previousWhiteColor = Color.white;
 
         // Kiss xoxo
         // PaternCube[] paterns = Resources.LoadAll<PaternCube>("Patterns"); Load in the "Resources" folder
@@ -187,20 +191,22 @@ public class GameManager : MonoBehaviour
         switch (random)
         {
             case 0:
-                blackMaterial.SetColor("_GlowColor", Color.red * factor);
-                whiteMaterial.SetColor("_GlowColor", new Color(0, 191, 97, 255));
+                blackMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, Color.red * factor, Mathf.PingPong(Time.time, 1)));
+                whiteMaterial.SetColor("_GlowColor", Color.Lerp(previousWhiteColor, new Color(0, 191, 97, 255), Mathf.PingPong(Time.time, 1)));
                 break;
             case 1:
-                blackMaterial.SetColor("_GlowColor", Color.blue * factor);
-                whiteMaterial.SetColor("_GlowColor", new Color(255, 44, 0, 255));
+                blackMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, Color.blue * factor, Mathf.PingPong(Time.time, 1)));
+                whiteMaterial.SetColor("_GlowColor", Color.Lerp(previousWhiteColor, new Color(255, 44, 0, 255), Mathf.PingPong(Time.time, 1)));
                 break;
             case 2:
-                blackMaterial.SetColor("_GlowColor", new Color(105, 0, 91, 255));
-                whiteMaterial.SetColor("_GlowColor", Color.green * (factor * 0.25f));
+                blackMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, new Color(105, 0, 91, 255), Mathf.PingPong(Time.time, 1)));
+                whiteMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, Color.green * (factor * 0.25f), Mathf.PingPong(Time.time, 1)));
                 break;
             default:
                 break;
         }
+        previousBlackColor = blackMaterial.GetColor("_GlowColor");
+        previousWhiteColor = whiteMaterial.GetColor("_GlowColor");
     }
 
     private IEnumerator ColorSwitch()
