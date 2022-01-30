@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
     
     [Header("Material")] 
     [SerializeField] private float timeBetweenColorChange;
+    [SerializeField] private float colorTransitionDuration;
     private int previousColor;
-    private Color previousWhiteColor, previousBlackColor;
     private bool isColorSwitching;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
@@ -90,8 +90,6 @@ public class GameManager : MonoBehaviour
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
         actualTag = whiteTag;
         previousColor = 5;
-        previousBlackColor = Color.white;
-        previousWhiteColor = Color.white;
 
         // Kiss xoxo
         // PaternCube[] paterns = Resources.LoadAll<PaternCube>("Patterns"); Load in the "Resources" folder
@@ -175,45 +173,56 @@ public class GameManager : MonoBehaviour
         GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
     }
 
-    private void RandomColor()
+    IEnumerator LerpColor()
     {
+        // Get current colors
+        Color currentWhiteColor = whiteMaterial.GetColor("_GlowColor");
+        Color currentBlackColor = blackMaterial.GetColor("_GlowColor");
+        
+        // Determine which colors we want
+        Color wantedWhiteColor = Color.white;
+        Color wantedBlackColor = Color.white;
+        float factor = Mathf.Pow(2, 10);
         int random = Random.Range(0, 3);
         while (random == previousColor)
         {
             random = Random.Range(0, 3);
         }
 
-        previousColor = random;
-        float factor = Mathf.Pow(2, 10);
-        blackMaterial.SetColor("_BaseColor", Color.gray);
-        whiteMaterial.SetColor("_BaseColor", Color.gray);
-
         switch (random)
         {
             case 0:
-                blackMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, Color.red * factor, Mathf.PingPong(Time.time, 1)));
-                whiteMaterial.SetColor("_GlowColor", Color.Lerp(previousWhiteColor, new Color(0, 191, 97, 255), Mathf.PingPong(Time.time, 1)));
+                wantedBlackColor = Color.red * factor;
+                wantedWhiteColor = new Color(0, 191, 97, 255);
                 break;
             case 1:
-                blackMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, Color.blue * factor, Mathf.PingPong(Time.time, 1)));
-                whiteMaterial.SetColor("_GlowColor", Color.Lerp(previousWhiteColor, new Color(255, 44, 0, 255), Mathf.PingPong(Time.time, 1)));
+                wantedBlackColor = Color.blue * factor;
+                wantedWhiteColor = new Color(255, 44, 0, 255);
                 break;
             case 2:
-                blackMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, new Color(105, 0, 91, 255), Mathf.PingPong(Time.time, 1)));
-                whiteMaterial.SetColor("_GlowColor", Color.Lerp(previousBlackColor, Color.green * (factor * 0.25f), Mathf.PingPong(Time.time, 1)));
-                break;
-            default:
+                wantedBlackColor = new Color(105, 0, 91, 255);
+                wantedWhiteColor = Color.green * (factor * 0.25f);
                 break;
         }
-        previousBlackColor = blackMaterial.GetColor("_GlowColor");
-        previousWhiteColor = whiteMaterial.GetColor("_GlowColor");
+        
+        float timer = 0;
+        while(timer < colorTransitionDuration)
+        {
+            float t = timer / colorTransitionDuration;
+            whiteMaterial.SetColor("_GlowColor", Color.Lerp(currentWhiteColor, wantedWhiteColor, t));
+            blackMaterial.SetColor("_GlowColor", Color.Lerp(currentBlackColor, wantedBlackColor, t));
+            
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private IEnumerator ColorSwitch()
     {
         isColorSwitching = true;
         yield return new WaitForSeconds(timeBetweenColorChange);
-        RandomColor();
+        // RandomColor();
+        StartCoroutine(LerpColor());
         isColorSwitching = false;
     }
 
