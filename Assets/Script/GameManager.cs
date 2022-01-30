@@ -278,8 +278,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckIfHighScore()
     {
-        if (PlayerPrefs.GetInt("High Score") != null &&
-            PlayerPrefs.GetInt("High Score") < score)
+        if (PlayerPrefs.GetInt("High Score") < score)
         {
             PlayerPrefs.SetInt("High Score", score);
         }
