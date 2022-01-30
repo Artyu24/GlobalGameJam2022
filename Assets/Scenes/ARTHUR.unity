@@ -168,10 +168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundButton: {fileID: 1791987279}
   vibrationButton: {fileID: 1617030730}
-  muteSprite: {fileID: 21300000, guid: d3e8b43045fa5df4fa14c57461a0e26d, type: 3}
+  muteSprite: {fileID: 21300000, guid: 01e424de53cd27f46ac45b8fdd5d834d, type: 3}
   unmuteSprite: {fileID: 21300000, guid: 2554267a1af81304caf915f9a3fef094, type: 3}
-  vibrationSprite: {fileID: 21300000, guid: a629a2e342647d6458bc886543636029, type: 3}
-  vibratioffSprite: {fileID: 21300000, guid: 7342c3fe070f6be4b815049a3e36baac, type: 3}
+  vibrationSprite: {fileID: 21300000, guid: 1baaf32a02d73c44e8e5403e5f992ce3, type: 3}
+  vibratioffSprite: {fileID: 21300000, guid: 37c984bbfc2d73045aaba91c541a339c, type: 3}
+  cam: {fileID: 68544756}
   _isSoundEnabled: 1
   _isVibrationEnabled: 1
 --- !u!4 &37825672 stripped
@@ -483,7 +484,6 @@ Transform:
   - {fileID: 627469819}
   - {fileID: 1108545491}
   - {fileID: 1876847022}
-  - {fileID: 469438249}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1709,52 +1709,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455188424}
   m_CullTransparentMesh: 1
---- !u!1 &469438248
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 469438249}
-  - component: {fileID: 469438251}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &469438249
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469438248}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 203387076}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &469438251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469438248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 444a817182870de4686a9e6416842c83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicIG: {fileID: 8300000, guid: bcbc28dfd9f9e00489a5ac156088f7a2, type: 3}
-  musicMenu: {fileID: 8300000, guid: 06ec8845ad794864db769166cd635d32, type: 3}
-  cam: {fileID: 68544756}
 --- !u!1 &509277438
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,6 +4603,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 967050409}
     m_Modifications:
+    - target: {fileID: 4900506748864586185, guid: b69ccd6f84abde64d90426ffd7881632, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1baaf32a02d73c44e8e5403e5f992ce3, type: 3}
     - target: {fileID: 4900506748864586191, guid: b69ccd6f84abde64d90426ffd7881632, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4657,9 +4615,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4138716}
+    - target: {fileID: 4900506749038232021, guid: b69ccd6f84abde64d90426ffd7881632, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 265218bec95f2fb459b601aa58ddd2c7, type: 3}
     - target: {fileID: 4900506750286239370, guid: b69ccd6f84abde64d90426ffd7881632, type: 3}
       propertyPath: m_Name
       value: OptionButtons
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900506750286239370, guid: b69ccd6f84abde64d90426ffd7881632, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4900506750286239381, guid: b69ccd6f84abde64d90426ffd7881632, type: 3}
       propertyPath: m_Pivot.x

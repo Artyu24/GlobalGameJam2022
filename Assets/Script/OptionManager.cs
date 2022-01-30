@@ -15,6 +15,7 @@ public class OptionManager : MonoBehaviour
     [SerializeField] private Sprite unmuteSprite;
     [SerializeField] private Sprite vibrationSprite;
     [SerializeField] private Sprite vibratioffSprite;
+    [SerializeField] private GameObject cam;
 
     [Header("Option")]
     [SerializeField] private bool _isSoundEnabled = true;
@@ -48,12 +49,14 @@ public class OptionManager : MonoBehaviour
         if (isSoundEnable)
         {
             //enable sound
+            cam.GetComponent<AudioListener>().enabled = false;
             isSoundEnable = false;
             soundButton.image.sprite = muteSprite;
         }
         else
         {
             //disable sound
+            cam.GetComponent<AudioListener>().enabled = true;
             isSoundEnable = true;
             soundButton.image.sprite = unmuteSprite;
         }
