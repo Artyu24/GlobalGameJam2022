@@ -47,7 +47,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpeedEffectManager speedEffectManager;
     private float accelSpeedEffect;
 
-    [Header("Defeat")] 
+    [Header("Defeat")] private string blackTag = "Black";
+    [Header("Defeat")] private string whiteTag = "White";
+    private string actualTag;
+    public string getActualTag { get { return actualTag; } }
     [SerializeField] private GameObject defeatPanel;
     [SerializeField] private Text defeatScoreText;
     [SerializeField] private Text defeatHighScoreText;
@@ -83,6 +86,7 @@ public class GameManager : MonoBehaviour
         speedEffectManager.UpdateParticles(accelSpeedEffect);
 
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
+        actualTag = whiteTag;
         previousColor = 5;
 
         // Kiss xoxo
@@ -130,20 +134,16 @@ public class GameManager : MonoBehaviour
     {
         isWhiteSide = !isWhiteSide;
 
-        foreach (GameObject _blackCube in BlackCubeTab())
+        if (isWhiteSide)
         {
-            _blackCube.GetComponent<BoxCollider2D>().enabled = isWhiteSide;
-        }
-
-        foreach (GameObject _whiteCube in WhiteCubeTab())
-        {
-            _whiteCube.GetComponent<BoxCollider2D>().enabled = !isWhiteSide;
-        }
-
-        if(isWhiteSide)
             player.GetComponent<SpriteRenderer>().material = whiteMaterial;
+            actualTag = blackTag;
+        }
         else
+        {
             player.GetComponent<SpriteRenderer>().material = blackMaterial;
+            actualTag = whiteTag;
+        }
     }
 
     public void SpawnCube(string side, GameObject whichCube)

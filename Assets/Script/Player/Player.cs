@@ -60,7 +60,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TakeDamage(1);
+        if (other.CompareTag(GameManager.Instance.getActualTag))
+            TakeDamage(1);
         // GameManager.Instance.ResetCube();
     }
 
