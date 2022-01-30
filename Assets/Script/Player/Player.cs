@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         TakeDamage(1);
-        Destroy(other.gameObject);
+        GameManager.Instance.ResetCube();
     }
 
     public void TakeDamage(int _damage)

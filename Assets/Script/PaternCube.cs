@@ -14,14 +14,6 @@ public class PaternCube : MonoBehaviour
         public float timeBetweenThem;
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ActivateCoroutine();
-        }
-    }
-
     public void ActivateCoroutine()
     {
         StartCoroutine(Patern());

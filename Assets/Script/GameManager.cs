@@ -171,6 +171,19 @@ public class GameManager : MonoBehaviour
             _blackCube.GetComponent<BoxCollider2D>().enabled = false;
     }
 
+    public void ResetCube()
+    {
+        foreach (GameObject whiteCube in WhiteCubeTab())
+        {
+            Destroy(whiteCube.gameObject);
+        }
+
+        foreach (GameObject blackCube in BlackCubeTab())
+        {
+            Destroy(blackCube.gameObject);
+        }
+    }
+
     private void RandomColor()
     {
         int random = Random.Range(0, 3);
