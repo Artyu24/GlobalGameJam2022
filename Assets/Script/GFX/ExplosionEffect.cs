@@ -17,8 +17,8 @@ public class ExplosionEffect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"collision with {other.name}");
-        Debug.Log(other.tag);
+        // Debug.Log($"collision with {other.name}");
+        // Debug.Log(other.tag);
         if (other.CompareTag("Black") || other.CompareTag("White"))
         {
             Destroy(other.gameObject);

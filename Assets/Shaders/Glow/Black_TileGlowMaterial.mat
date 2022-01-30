@@ -46,5 +46,5 @@ Material:
     - Color_5e36492559ad4f71b10d8e79bc3e59e8: {r: 0, g: 1, b: 0, a: 1}
     - Color_e7f2122a07884b1abe14b80d048d4e82: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _GlowColor: {r: 11.05438, g: 0.9338038, b: 32.012203, a: 44.027187}
+    - _GlowColor: {r: 23.968628, g: 0.1254902, b: 0.1254902, a: 1023.333}
   m_BuildTextureStacks: []
