@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  timeBetweenAccel: 5
+  timeBetweenAccel: 10
   timeMultiplierDecrease: 0.06
   leftSpawn: {fileID: 1102025535}
   rightSpawn: {fileID: 922804595}
@@ -452,6 +452,7 @@ MonoBehaviour:
   - {fileID: 180083535}
   - {fileID: 368327822}
   scoreText: {fileID: 332041461}
+  timeBetweenColorChange: 20
   blackMaterial: {fileID: 2100000, guid: 37a8ea1b2c47727449a5eadb2c147e06, type: 2}
   whiteMaterial: {fileID: 2100000, guid: afe2d2249f15f044792b822e20970e1e, type: 2}
   defeatPanel: {fileID: 277621655}

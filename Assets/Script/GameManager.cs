@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text scoreText;
 
     [Header("Material")] 
+    [SerializeField] private float timeBetweenColorChange;
+    private int previousColor;
+    private bool isColorSwitching;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
 
@@ -65,10 +68,7 @@ public class GameManager : MonoBehaviour
         timeMultiplier = 1;
         accel = speed * 0.2f;
 
-        blackMaterial.SetColor("_GlowColor", Color.black);
-        blackMaterial.SetColor("_BaseColor", Color.black);
-        whiteMaterial.SetColor("_GlowColor", Color.white);
-        whiteMaterial.SetColor("_BaseColor", Color.black);
+        previousColor = 5;
     }
 
     private void Update()
@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour
 
             if (!isPaternPlay)
                 PlayRandomPatern();
+
+            if (!isColorSwitching)
+                StartCoroutine(ColorSwitch());
         }
         else
         {
@@ -144,6 +147,46 @@ public class GameManager : MonoBehaviour
         GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
         if (!isWhiteSide)
             _blackCube.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    private void RandomColor()
+    {
+        int random = Random.Range(0, 3);
+        while (random == previousColor)
+        {
+            random = Random.Range(0, 3);
+        }
+
+        previousColor = random;
+        float factor = Mathf.Pow(2, 10);
+        blackMaterial.SetColor("_BaseColor", Color.gray);
+        whiteMaterial.SetColor("_BaseColor", Color.gray);
+
+        switch (random)
+        {
+            case 0:
+                blackMaterial.SetColor("_GlowColor", Color.red * factor);
+                whiteMaterial.SetColor("_GlowColor", new Color(0, 191, 97, 255));
+                break;
+            case 1:
+                blackMaterial.SetColor("_GlowColor", Color.blue * factor);
+                whiteMaterial.SetColor("_GlowColor", new Color(255, 44, 0, 255));
+                break;
+            case 2:
+                blackMaterial.SetColor("_GlowColor", new Color(105, 0, 91, 255));
+                whiteMaterial.SetColor("_GlowColor", Color.green * (factor * 0.25f));
+                break;
+            default:
+                break;
+        }
+    }
+
+    private IEnumerator ColorSwitch()
+    {
+        isColorSwitching = true;
+        yield return new WaitForSeconds(timeBetweenColorChange);
+        RandomColor();
+        isColorSwitching = false;
     }
 
     private IEnumerator AccelGame()
