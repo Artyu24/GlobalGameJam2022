@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Tableau des paternes")]
     [SerializeField] private PaternCube[] tabPatern;
+    private int lastPatern;
 
     [Header("Score")]
     private int score;
@@ -110,7 +111,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0;
+            if(WhiteCubeTab().Length == 0 || BlackCubeTab().Length == 0)
+                ResetCube();
+
             defeatPanel.SetActive(true);
             CheckIfHighScore();
             defeatHighScoreText.text = "High Score : " + PlayerPrefs.GetInt("High Score").ToString();
@@ -121,6 +124,7 @@ public class GameManager : MonoBehaviour
     private void PlayRandomPatern()
     {
         int random = Random.Range(0, tabPatern.Length);
+        lastPatern = random;
         tabPatern[random].ActivateCoroutine();
     }
 
