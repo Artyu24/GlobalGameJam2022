@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
+    private static OptionManager _instance = null;
+    public static OptionManager instance { get => _instance; }
 
     [Header("Component")] 
     [SerializeField] private Button soundButton;
@@ -26,6 +28,19 @@ public class OptionManager : MonoBehaviour
     {
         get { return _isVibrationEnabled; }
         set { _isVibrationEnabled = value; }
+    }
+
+    private bool _isInMainMenu;
+    public bool isInMainMenu
+    {
+        get { return _isInMainMenu; }
+        set { _isInMainMenu = value; }
+    }
+
+
+    private void Awake()
+    {
+        _instance = this;
     }
 
     public void SwitchSound()

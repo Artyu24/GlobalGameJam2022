@@ -15,9 +15,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isLeft = true;
     private Vector2 dir;
 
+    [Header("Health")]
     [SerializeField] private int health = 3;
     [SerializeField] private GameObject[] tabHeart = new GameObject[3];
 
+    [Header("Effects"), SerializeField] private GameObject explosionEffectPrefab;
+    
     private void Start()
     {
         dir = transform.position;
@@ -63,7 +66,12 @@ public class Player : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         health -= _damage;
+        if (OptionManager.instance.isVibrationEnabled)
+        {
+            Handheld.Vibrate();
+        }
         tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
         Debug.Log(health);
+        Destroy(Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity), 1f);
     }
 }

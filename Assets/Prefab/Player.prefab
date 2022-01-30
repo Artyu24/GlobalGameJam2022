@@ -104,6 +104,11 @@ MonoBehaviour:
   speedTravel: 0.01
   isLeft: 1
   health: 3
+  tabHeart:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  explosionEffectPrefab: {fileID: 8401458270047327201, guid: cdc46792f0316ca4ba5e8f0aec02922b, type: 3}
 --- !u!114 &921249902841294392
 MonoBehaviour:
   m_ObjectHideFlags: 0

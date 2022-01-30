@@ -11,14 +11,9 @@ public class MainMenuManager : MonoBehaviour
 
     public void Play()
     {
+        OptionManager.instance.isInMainMenu = false;
         SceneManager.LoadScene(levelToLoad);
     }
-
-    public void Options()
-    {
-        Debug.Log("open option");
-    }
-
     public void Credits()
     {
         if (créditsPanel.activeInHierarchy)
