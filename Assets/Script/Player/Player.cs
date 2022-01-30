@@ -32,27 +32,25 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (swipeControls.swipeLeft && !isLeft)
+        if (!GameManager.Instance.isGamePaused)
         {
-            dir = leftPosition.transform.position;
-            
-            isLeft = true;
-            Debug.Log("SWIPE LEFT");
-            GameManager.Instance.SwitchLine();
-            UpdateTrailColor();
-        }
-        else if (swipeControls.swipeRight && isLeft)
-        {
-            dir = rightPosition.transform.position;
-            isLeft = false;
-            Debug.Log("SWIPE RIGHT");
-            GameManager.Instance.SwitchLine();
-            UpdateTrailColor();
-        }
-
-        else if (swipeControls.tap && !swipeControls.isDragging)
-        {
-            Debug.Log("Changement de couleur ?");
+            if (swipeControls.swipeLeft && !isLeft)
+            {
+                dir = leftPosition.transform.position;
+                
+                isLeft = true;
+                Debug.Log("SWIPE LEFT");
+                GameManager.Instance.SwitchLine();
+                UpdateTrailColor();
+            }
+            else if (swipeControls.swipeRight && isLeft)
+            {
+                dir = rightPosition.transform.position;
+                isLeft = false;
+                Debug.Log("SWIPE RIGHT");
+                GameManager.Instance.SwitchLine();
+                UpdateTrailColor();
+            }
         }
 
         transform.position = Vector3.MoveTowards(transform.position, dir, speedTravel);
@@ -88,7 +86,6 @@ public class Player : MonoBehaviour
             Handheld.Vibrate();
         }
         tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
-        Debug.Log(health);
         Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
     }
 }

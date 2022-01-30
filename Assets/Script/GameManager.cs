@@ -74,13 +74,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text defeatHighScoreText;
     private bool _isPlayerAlive = true;
 
+    public bool isGamePaused = false;
+
     public bool isPlayerAlive
     {
         get { return _isPlayerAlive; }
         set { _isPlayerAlive = value; }
     }
 
-    [Header("Sound")] private bool isPaternPlay;
+     private bool isPaternPlay;
 
     public bool GetIsPaternPlay
     {
