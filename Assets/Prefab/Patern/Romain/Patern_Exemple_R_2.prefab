@@ -52,7 +52,7 @@ MonoBehaviour:
     timeBetweenThem: 0.3
   - leftCube: {fileID: 1098246421785167659, guid: 01b6f6c446c62004fb588cc36915befb, type: 3}
     rightCube: {fileID: 1098246421785167659, guid: 01b6f6c446c62004fb588cc36915befb, type: 3}
-    timeBetweenThem: 0.3
+    timeBetweenThem: 0.4
   - leftCube: {fileID: 4128944868904251677, guid: b65fecee5c2135949a3d0af8e53f203b, type: 3}
     rightCube: {fileID: 0}
     timeBetweenThem: 0.1
