@@ -262,6 +262,39 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2821294292014822956, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
   m_PrefabInstance: {fileID: 1236882872}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &68544757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68544756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d594bd52084b81a3606518deb9406c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 68544758}
+  vignetteIntensity: 0
+--- !u!95 &68544758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68544756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7ca139d43f56e646b2ac29ee0cb8e2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &155063510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,6 +507,7 @@ MonoBehaviour:
   defeatPanel: {fileID: 277621655}
   defeatScoreText: {fileID: 277621654}
   defeatHighScoreText: {fileID: 277621653}
+  isGamePaused: 0
 --- !u!4 &203387076
 Transform:
   m_ObjectHideFlags: 0
@@ -863,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 698079751165071065, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 73.79999
+      value: 73.80005
       objectReference: {fileID: 0}
     - target: {fileID: 698079751165071066, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -991,7 +1025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 698079751931097677, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 73.70001
+      value: 73.69995
       objectReference: {fileID: 0}
     - target: {fileID: 698079751931097678, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

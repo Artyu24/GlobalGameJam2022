@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
-    [Header("Component")] 
+    [Header("Component")]
     [SerializeField] private Swipe swipeControls;
     [SerializeField] private GameObject leftPosition;
     [SerializeField] private GameObject rightPosition;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [Header("Effects"), SerializeField] private GameObject explosionEffectPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private TrailRenderer trailRenderer;
-    
+
     private void Start()
     {
         dir = transform.position;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             if (swipeControls.swipeLeft && !isLeft)
             {
                 dir = leftPosition.transform.position;
-                
+
                 isLeft = true;
                 Debug.Log("SWIPE LEFT");
                 GameManager.Instance.SwitchLine();
@@ -81,11 +81,38 @@ public class Player : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         health -= _damage;
+
+        // Manage Health indicator
+        if (health > 0)
+        {
+            if (health == 1)
+            {
+                HealthIndicatorManager.instance.EnableHealthIndicator();
+            }
+            else
+            {
+                HealthIndicatorManager.instance.BlinkHealthIndicator();
+            }
+        }
+        else
+        {
+            HealthIndicatorManager.instance.DisableHealthIndicator();
+        }
+
+        // Handle vibrations
         if (OptionManager.instance.isVibrationEnabled)
         {
             Handheld.Vibrate();
         }
-        tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
+
+        // Handle hearts UI
+        if (tabHeart.Length > health)
+        {
+            tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
+        }
+        Debug.Log(health);
+
+        // Create explosion effect
         Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
     }
 }
