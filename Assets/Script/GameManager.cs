@@ -10,34 +10,46 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
-    public static GameManager Instance { get => _instance; }
 
-    [Header("Vitesse des cubes")]
-    [SerializeField] private float speed;
-    public float GetSpeed { get => speed; }
+    public static GameManager Instance
+    {
+        get => _instance;
+    }
 
-    [Header("Acc�l�ration")]
-    private float accel;
+    [Header("Vitesse des cubes")] [SerializeField]
+    private float speed;
+
+    public float GetSpeed
+    {
+        get => speed;
+    }
+
+    [Header("Acc�l�ration")] private float accel;
     [SerializeField] private float timeBetweenAccel;
-    
-    [Header("R�duction du temps � chaque accel (<0.1f)")]
-    [SerializeField] private float timeMultiplierDecrease;
-    private float timeMultiplier;
-    public float GetTimeMultiplier { get { return timeMultiplier; } }
 
-    [Header("Spawn & Cubes")]
-    [SerializeField] private GameObject leftSpawn, rightSpawn;
+    [Header("R�duction du temps � chaque accel (<0.1f)")] [SerializeField]
+    private float timeMultiplierDecrease;
+
+    private float timeMultiplier;
+
+    public float GetTimeMultiplier
+    {
+        get { return timeMultiplier; }
+    }
+
+    [Header("Spawn & Cubes")] [SerializeField]
+    private GameObject leftSpawn, rightSpawn;
+
     [SerializeField] private GameObject blackCube, whiteCube;
 
-    [Header("Tableau des paternes")]
-    [SerializeField] private PaternCube[] tabPatern;
+    [Header("Tableau des paternes")] [SerializeField]
+    private PaternCube[] tabPatern;
 
-    [Header("Score")]
-    private int score;
+    [Header("Score")] private int score;
     private int scoreMultiplier;
     [SerializeField] private TMP_Text scoreText;
-    
-    [Header("Material")] 
+
+    [Header("Material")] [SerializeField] private ColorPair[] colorPairs;
     [SerializeField] private float timeBetweenColorChange;
     [SerializeField] private float colorTransitionDuration;
     private int previousColor;
@@ -48,26 +60,33 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpeedEffectManager speedEffectManager;
     private float accelSpeedEffect;
 
-    [Header("Defeat")] 
-    private string blackTag = "Black";
+    [Header("Defeat")] private string blackTag = "Black";
     private string whiteTag = "White";
     private string actualTag;
-    public string getActualTag { get { return actualTag; } }
+
+    public string getActualTag
+    {
+        get { return actualTag; }
+    }
+
     [SerializeField] private GameObject defeatPanel;
     [SerializeField] private Text defeatScoreText;
     [SerializeField] private Text defeatHighScoreText;
     private bool _isPlayerAlive = true;
+
     public bool isPlayerAlive
     {
         get { return _isPlayerAlive; }
         set { _isPlayerAlive = value; }
     }
 
-    [Header("Sound")]
+    [Header("Sound")] private bool isPaternPlay;
 
-
-    private bool isPaternPlay;
-    public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
+    public bool GetIsPaternPlay
+    {
+        get { return isPaternPlay; }
+        set { isPaternPlay = value; }
+    }
 
     private bool isWhiteSide;
     private bool isAccelFinish;
@@ -89,7 +108,10 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
         actualTag = whiteTag;
-        previousColor = 5;
+
+        previousColor = UnityEngine.Random.Range(0, colorPairs.Length);
+        whiteMaterial.SetColor("_GlowColor", colorPairs[previousColor].whiteColor);
+        blackMaterial.SetColor("_GlowColor", colorPairs[previousColor].blackColor);
 
         // Kiss xoxo
         // PaternCube[] paterns = Resources.LoadAll<PaternCube>("Patterns"); Load in the "Resources" folder
@@ -135,12 +157,12 @@ public class GameManager : MonoBehaviour
 
         if (isWhiteSide)
         {
-            player.GetComponent<SpriteRenderer>().material = whiteMaterial;
+            player.GetComponent<SpriteRenderer>().sharedMaterial = whiteMaterial;
             actualTag = blackTag;
         }
         else
         {
-            player.GetComponent<SpriteRenderer>().material = blackMaterial;
+            player.GetComponent<SpriteRenderer>().sharedMaterial = blackMaterial;
             actualTag = whiteTag;
         }
     }
@@ -165,12 +187,14 @@ public class GameManager : MonoBehaviour
 
     private void SpawnWhiteCube(GameObject spawnPosition)
     {
-        GameObject _whiteCube = Instantiate(whiteCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
+        GameObject _whiteCube = Instantiate(whiteCube, spawnPosition.transform.position, Quaternion.identity,
+            spawnPosition.transform);
     }
 
     private void SpawnBlackCube(GameObject spawnPosition)
     {
-        GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
+        GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity,
+            spawnPosition.transform);
     }
 
     IEnumerator LerpColor()
@@ -178,40 +202,27 @@ public class GameManager : MonoBehaviour
         // Get current colors
         Color currentWhiteColor = whiteMaterial.GetColor("_GlowColor");
         Color currentBlackColor = blackMaterial.GetColor("_GlowColor");
-        
+
         // Determine which colors we want
-        Color wantedWhiteColor = Color.white;
-        Color wantedBlackColor = Color.white;
-        float factor = Mathf.Pow(2, 10);
-        int random = Random.Range(0, 3);
+        ColorPair currentColorPair = colorPairs[previousColor];
+        int random = Random.Range(0, colorPairs.Length);
         while (random == previousColor)
         {
-            random = Random.Range(0, 3);
+            random = Random.Range(0, colorPairs.Length);
         }
 
-        switch (random)
-        {
-            case 0:
-                wantedBlackColor = Color.red * factor;
-                wantedWhiteColor = new Color(0, 191, 97, 255);
-                break;
-            case 1:
-                wantedBlackColor = Color.blue * factor;
-                wantedWhiteColor = new Color(255, 44, 0, 255);
-                break;
-            case 2:
-                wantedBlackColor = new Color(105, 0, 91, 255);
-                wantedWhiteColor = Color.green * (factor * 0.25f);
-                break;
-        }
-        
+        previousColor = random;
+        ColorPair wantedColorPair = colorPairs[random];
+
         float timer = 0;
-        while(timer < colorTransitionDuration)
+        while (timer < colorTransitionDuration)
         {
             float t = timer / colorTransitionDuration;
-            whiteMaterial.SetColor("_GlowColor", Color.Lerp(currentWhiteColor, wantedWhiteColor, t));
-            blackMaterial.SetColor("_GlowColor", Color.Lerp(currentBlackColor, wantedBlackColor, t));
-            
+            whiteMaterial.SetColor("_GlowColor",
+                Color.Lerp(currentColorPair.whiteColor, wantedColorPair.whiteColor, t));
+            blackMaterial.SetColor("_GlowColor",
+                Color.Lerp(currentColorPair.blackColor, wantedColorPair.blackColor, t));
+
             timer += Time.deltaTime;
             yield return null;
         }
@@ -246,7 +257,6 @@ public class GameManager : MonoBehaviour
         score += 1 * scoreMultiplier;
         scoreText.text = score.ToString();
         isScoreIncrease = false;
-
     }
 
     private GameObject[] BlackCubeTab()
@@ -275,5 +285,12 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("High Score", score);
         }
+    }
+
+    [System.Serializable]
+    struct ColorPair
+    {
+        [ColorUsage(true, true)] public Color whiteColor;
+        [ColorUsage(true, true)] public Color blackColor;
     }
 }
