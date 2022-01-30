@@ -454,7 +454,8 @@ MonoBehaviour:
   scoreText: {fileID: 332041461}
   timeBetweenColorChange: 20
   blackMaterial: {fileID: 2100000, guid: 37a8ea1b2c47727449a5eadb2c147e06, type: 2}
-  whiteMaterial: {fileID: 2100000, guid: afe2d2249f15f044792b822e20970e1e, type: 2}
+  whiteMaterial: {fileID: 2100000, guid: cf5bf51a146a9c744b59c32c882db820, type: 2}
+  player: {fileID: 556802947}
   defeatPanel: {fileID: 277621655}
   defeatScoreText: {fileID: 277621654}
   defeatHighScoreText: {fileID: 277621653}
@@ -1575,6 +1576,11 @@ Transform:
   m_Father: {fileID: 203387076}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &556802947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 921249902841294393, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
+  m_PrefabInstance: {fileID: 281889050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &599087166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908542167221559853, guid: 75f9a5a4fe2dfa64882b0eeb3ccec0d4, type: 3}

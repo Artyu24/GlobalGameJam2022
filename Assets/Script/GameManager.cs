@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     private bool isColorSwitching;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
+    [SerializeField] private GameObject player;
 
     [Header("Defeat")] 
     private bool _isPlayerAlive = true;
@@ -65,9 +66,11 @@ public class GameManager : MonoBehaviour
 
         scoreMultiplier = 1;
         scoreText.text = score.ToString();
+
         timeMultiplier = 1;
         accel = speed * 0.2f;
 
+        player.GetComponent<SpriteRenderer>().material = blackMaterial;
         previousColor = 5;
     }
 
@@ -116,6 +119,11 @@ public class GameManager : MonoBehaviour
         {
             _whiteCube.GetComponent<BoxCollider2D>().enabled = !isWhiteSide;
         }
+
+        if(isWhiteSide)
+            player.GetComponent<SpriteRenderer>().material = whiteMaterial;
+        else
+            player.GetComponent<SpriteRenderer>().material = blackMaterial;
     }
 
     public void SpawnCube(string side, GameObject whichCube)
