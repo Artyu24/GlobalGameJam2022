@@ -492,12 +492,12 @@ MonoBehaviour:
   - {fileID: 368327822}
   scoreText: {fileID: 332041461}
   colorPairs:
-  - whiteColor: {r: 2.9960785, g: 0, b: 0, a: 1}
-    blackColor: {r: 0, g: 2.9960785, b: 1.5215687, a: 1}
-  - whiteColor: {r: 0, g: 0, b: 2.9960785, a: 1}
-    blackColor: {r: 2.9960785, g: 0.5176471, b: 0, a: 1}
-  - whiteColor: {r: 1.6470588, g: 0, b: 1.427451, a: 1}
-    blackColor: {r: 0, g: 4, b: 0, a: 1}
+  - whiteColor: {r: 11.984314, g: 0, b: 0, a: 1}
+    blackColor: {r: 0, g: 11.984314, b: 6.0862746, a: 1}
+  - whiteColor: {r: 0, g: 0, b: 11.984314, a: 1}
+    blackColor: {r: 11.984314, g: 2.0705884, b: 0, a: 1}
+  - whiteColor: {r: 11.984314, g: 0, b: 10.415687, a: 1}
+    blackColor: {r: 0, g: 11.984314, b: 0, a: 1}
   timeBetweenColorChange: 5
   colorTransitionDuration: 0.2
   blackMaterial: {fileID: 2100000, guid: 37a8ea1b2c47727449a5eadb2c147e06, type: 2}
@@ -3122,6 +3122,10 @@ PrefabInstance:
     - target: {fileID: 2821294292014823120, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821294292014823121, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
+      propertyPath: priority
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
