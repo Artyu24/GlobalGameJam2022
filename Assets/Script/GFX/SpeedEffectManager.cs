@@ -8,7 +8,15 @@ public class SpeedEffectManager : MonoBehaviour
 
     [SerializeField] private MinMaxAndCurrent particlesSpeed;
     [SerializeField] private MinMaxAndCurrent particlesCount;
- 
+
+    public void UpdateParticles(float t)
+    {
+        SetParticleSpeed(t);
+        SetParticlesCount(t);
+        
+        if(!particleSystem.isPlaying) particleSystem.Play();
+    }
+    
     public void SetParticleSpeed(float t)
     {
         // Define new speed
@@ -28,7 +36,6 @@ public class SpeedEffectManager : MonoBehaviour
         }
         particleSystem.SetParticles(particles);
     }
-
     public void SetParticlesCount(float t)
     {
         // Define new particles count

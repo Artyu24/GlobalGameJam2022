@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         accel = speed * 0.2f;
 
         accelSpeedEffect = 0;
-        speedEffectManager.SetParticleSpeed(accelSpeedEffect);
+        speedEffectManager.UpdateParticles(accelSpeedEffect);
 
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
         previousColor = 5;
@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
         speed += accel;
         scoreMultiplier++;
         accelSpeedEffect += 0.1f;
-        speedEffectManager.SetParticleSpeed(accelSpeedEffect);
+        speedEffectManager.UpdateParticles(accelSpeedEffect);
         timeMultiplier -= timeMultiplierDecrease;
         isAccelFinish = false;
     }

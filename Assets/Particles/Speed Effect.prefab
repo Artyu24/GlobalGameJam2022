@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4818,11 +4818,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 7972421390680373527}
-  temp: 0
-  temp2: 0
   particlesSpeed:
     t: 0
-    minMax: {x: 15, y: 25}
+    minMax: {x: 0, y: 25}
   particlesCount:
     t: 0
-    minMax: {x: 1, y: 5}
+    minMax: {x: 0, y: 5}
