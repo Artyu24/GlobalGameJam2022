@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +16,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float speed;
     public float GetSpeed { get => speed; }
 
-    [Header("Accélération")]
+    [Header("Accï¿½lï¿½ration")]
     private float accel;
     [SerializeField] private float timeBetweenAccel;
     
-    [Header("Réduction du temps à chaque accel (<0.1f)")]
+    [Header("Rï¿½duction du temps ï¿½ chaque accel (<0.1f)")]
     [SerializeField] private float timeMultiplierDecrease;
     private float timeMultiplier;
     public float GetTimeMultiplier { get { return timeMultiplier; } }
@@ -32,15 +35,16 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     private int score;
     private int scoreMultiplier;
-    [SerializeField] private Text scoreText;
-
+    [SerializeField] private TMP_Text scoreText;
+    
     [Header("Material")] 
     [SerializeField] private float timeBetweenColorChange;
     private int previousColor;
     private bool isColorSwitching;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
-    [SerializeField] private GameObject player, speedEffect;
+    [SerializeField] private GameObject player;
+    [SerializeField] private SpeedEffectManager speedEffectManager;
     private float accelSpeedEffect;
 
     [Header("Defeat")] 
@@ -72,10 +76,15 @@ public class GameManager : MonoBehaviour
         accel = speed * 0.2f;
 
         accelSpeedEffect = 0;
-        speedEffect.GetComponent<SpeedEffectManager>().SetParticleSpeed(accelSpeedEffect);
+        speedEffectManager.SetParticleSpeed(accelSpeedEffect);
 
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
         previousColor = 5;
+
+        // Kiss xoxo
+        // PaternCube[] paterns = Resources.LoadAll<PaternCube>("Patterns"); Load in the "Resources" folder
+        // GameObject.FindObjectsOfType<GameManager>(true); Cool but look for the result in case
+        // Resources.FindObjectsOfTypeAll<GameManager>().Where(a => a.gameObject.scene.isLoaded); Find everything in scene and in project
     }
 
     private void Update()
@@ -210,7 +219,7 @@ public class GameManager : MonoBehaviour
         speed += accel;
         scoreMultiplier++;
         accelSpeedEffect += 0.1f;
-        speedEffect.GetComponent<SpeedEffectManager>().SetParticleSpeed(accelSpeedEffect);
+        speedEffectManager.SetParticleSpeed(accelSpeedEffect);
         timeMultiplier -= timeMultiplierDecrease;
         isAccelFinish = false;
     }
