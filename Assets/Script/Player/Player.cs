@@ -63,10 +63,11 @@ public class Player : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         health -= _damage;
-        tabHeart[health].SetActive(false);
         if (OptionManager.instance.isVibrationEnabled)
         {
             Handheld.Vibrate();
         }
+        tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
+        Debug.Log(health);
     }
 }
