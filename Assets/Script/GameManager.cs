@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
     private bool isColorSwitching;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Material whiteMaterial;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject player, speedEffect;
+    private float accelSpeedEffect;
 
     [Header("Defeat")] 
     private bool _isPlayerAlive = true;
@@ -69,6 +70,9 @@ public class GameManager : MonoBehaviour
 
         timeMultiplier = 1;
         accel = speed * 0.2f;
+
+        accelSpeedEffect = 0;
+        speedEffect.GetComponent<SpeedEffectManager>().SetParticleSpeed(accelSpeedEffect);
 
         player.GetComponent<SpriteRenderer>().material = blackMaterial;
         previousColor = 5;
@@ -205,6 +209,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Accel !");
         speed += accel;
         scoreMultiplier++;
+        accelSpeedEffect += 0.1f;
+        speedEffect.GetComponent<SpeedEffectManager>().SetParticleSpeed(accelSpeedEffect);
         timeMultiplier -= timeMultiplierDecrease;
         isAccelFinish = false;
     }
