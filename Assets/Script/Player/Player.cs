@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         dir = transform.position;
-        
+        OptionManager.instance.SwitchSound();
+        OptionManager.instance.SwitchVibration();
         // Get shared material
     }
 

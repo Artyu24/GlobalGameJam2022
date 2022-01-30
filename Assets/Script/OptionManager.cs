@@ -46,35 +46,41 @@ public class OptionManager : MonoBehaviour
 
     public void SwitchSound()
     {
-        if (isSoundEnable)
+        if (PlayerPrefs.GetInt("isSoundEnable") == 1)
         {
             //enable sound
             cam.GetComponent<AudioListener>().enabled = false;
             isSoundEnable = false;
+            PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
             soundButton.image.sprite = muteSprite;
         }
         else
         {
             //disable sound
             cam.GetComponent<AudioListener>().enabled = true;
-            isSoundEnable = true;
+            isSoundEnable = true; 
+            PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
             soundButton.image.sprite = unmuteSprite;
         }
     }
 
     public void SwitchVibration()
     {
-        if (isVibrationEnabled)
+        if (PlayerPrefs.GetInt("isVibrationEnabled") == 1)
         {
-            //enable sound
+            //enable Vibration
             isVibrationEnabled = false;
+            PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled ? 0 : 1);
             vibrationButton.image.sprite = vibratioffSprite;
+            Handheld.Vibrate();
         }
         else
         {
-            //disable sound
+            //disable Vibration
             isVibrationEnabled = true;
+            PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
             vibrationButton.image.sprite = vibrationSprite;
+            Handheld.Vibrate();
         }
     }
 }

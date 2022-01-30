@@ -60,7 +60,7 @@ public class Swipe : MonoBehaviour
         }
 
         //Add litle DeadZone
-        if (swipeDelta.magnitude > 100)
+        if (swipeDelta.magnitude > 25)
         {
             float x = swipeDelta.x;
             float y = swipeDelta.y;
