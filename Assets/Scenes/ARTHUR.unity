@@ -498,6 +498,14 @@ MonoBehaviour:
     blackColor: {r: 11.984314, g: 2.0705884, b: 0, a: 1}
   - whiteColor: {r: 11.984314, g: 0, b: 10.415687, a: 1}
     blackColor: {r: 0, g: 11.984314, b: 0, a: 1}
+  - whiteColor: {r: 16, g: 0, b: 6.4, a: 1}
+    blackColor: {r: 0, g: 0.22423935, b: 16, a: 1}
+  - whiteColor: {r: 16, g: 0.1882353, b: 0, a: 1}
+    blackColor: {r: 0.3764706, g: 0, b: 11.984314, a: 1}
+  - whiteColor: {r: 16, g: 0.1882353, b: 0, a: 1}
+    blackColor: {r: 0, g: 11.984314, b: 0, a: 1}
+  - whiteColor: {r: 11.984314, g: 0.019973857, b: 0, a: 1}
+    blackColor: {r: 0.25923538, g: 16, b: 0, a: 1}
   timeBetweenColorChange: 5
   colorTransitionDuration: 0.2
   blackMaterial: {fileID: 2100000, guid: 37a8ea1b2c47727449a5eadb2c147e06, type: 2}
@@ -1123,6 +1131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 921249902841294393, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 921249902841294397, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1513,6 +1525,10 @@ PrefabInstance:
     - target: {fileID: 7972421390680373521, guid: a6618a82d0d20ac4fb60296989348de9, type: 3}
       propertyPath: m_Name
       value: Speed Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972421390680373521, guid: a6618a82d0d20ac4fb60296989348de9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7972421390680373524, guid: a6618a82d0d20ac4fb60296989348de9, type: 3}
       propertyPath: m_RootOrder
@@ -3075,6 +3091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2821294292014822956, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2821294292014822958, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
       propertyPath: m_Intensity
       value: 0.1
@@ -3125,6 +3145,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2821294292014823121, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
       propertyPath: priority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821294292014823121, guid: 29928db6aa467ec4a9d2bcfd22945d6e, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -202,11 +202,9 @@ public class GameManager : MonoBehaviour
     IEnumerator LerpColor()
     {
         // Get current colors
-        Color currentWhiteColor = whiteMaterial.GetColor("_GlowColor");
-        Color currentBlackColor = blackMaterial.GetColor("_GlowColor");
+        ColorPair currentColorPair = colorPairs[previousColor];
 
         // Determine which colors we want
-        ColorPair currentColorPair = colorPairs[previousColor];
         int random = Random.Range(0, colorPairs.Length);
         while (random == previousColor)
         {
@@ -215,6 +213,7 @@ public class GameManager : MonoBehaviour
 
         previousColor = random;
         ColorPair wantedColorPair = colorPairs[random];
+        Debug.Log($"black = {wantedColorPair.blackColor} // white = {wantedColorPair.whiteColor}");
 
         float timer = 0;
         while (timer < colorTransitionDuration)
@@ -228,6 +227,10 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+        
+        // Give wanted colors
+        whiteMaterial.SetColor("_GlowColor", wantedColorPair.whiteColor);
+        blackMaterial.SetColor("_GlowColor", wantedColorPair.blackColor);
     }
 
     private IEnumerator ColorSwitch()
