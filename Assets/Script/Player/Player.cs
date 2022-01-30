@@ -64,6 +64,9 @@ public class Player : MonoBehaviour
     {
         health -= _damage;
         tabHeart[health].SetActive(false);
-        Debug.Log(health);
+        if (OptionManager.instance.isVibrationEnabled)
+        {
+            Handheld.Vibrate();
+        }
     }
 }

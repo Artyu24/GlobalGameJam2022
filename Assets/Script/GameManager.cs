@@ -48,15 +48,18 @@ public class GameManager : MonoBehaviour
     private float accelSpeedEffect;
 
     [Header("Defeat")] 
+    [SerializeField] private GameObject defeatPanel;
+    [SerializeField] private Text defeatScoreText;
+    [SerializeField] private Text defeatHighScoreText;
     private bool _isPlayerAlive = true;
     public bool isPlayerAlive
     {
         get { return _isPlayerAlive; }
         set { _isPlayerAlive = value; }
     }
-    [SerializeField] private GameObject defeatPanel;
-    [SerializeField] private Text defeatScoreText;
-    [SerializeField] private Text defeatHighScoreText;
+
+    [Header("Sound")]
+
 
     private bool isPaternPlay;
     public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
