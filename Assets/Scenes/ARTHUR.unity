@@ -797,6 +797,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1584346052}
     m_Modifications:
+    - target: {fileID: 698079750092578660, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698079750159058699, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 698079750214934274, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2034.6965
@@ -804,6 +812,10 @@ PrefabInstance:
     - target: {fileID: 698079750214934274, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 4.4133
+      objectReference: {fileID: 0}
+    - target: {fileID: 698079750214934275, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 698079751035269649, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_SizeDelta.x
@@ -813,10 +825,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 8.4723
       objectReference: {fileID: 0}
+    - target: {fileID: 698079751035269650, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 698079751165071066, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 203387075}
+    - target: {fileID: 698079751165071067, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 698079751424865648, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_Name
       value: DefeatPanel
@@ -909,10 +929,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 698079751424865650, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 698079751931097678, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 203387075}
+    - target: {fileID: 698079751931097679, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986159781230115257, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9095369895597371907, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1620.8882
@@ -923,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9095369895597371907, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -485.21667
+      value: -613
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
@@ -959,6 +991,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 698079751424865648, guid: 03c9c648b1766af4e9e29805f725dffc, type: 3}
   m_PrefabInstance: {fileID: 277621651}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &277621656
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277621655}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 738bd9c58933a0c44bbd26af0c7dfa00, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &281889050
 PrefabInstance:
   m_ObjectHideFlags: 0
