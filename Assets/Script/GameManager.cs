@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         else
         {
             defeatPanel.SetActive(true);
+            CheckIfHighScore();
             defeatHighScoreText.text = "High Score : " + PlayerPrefs.GetInt("High Score").ToString();
             defeatScoreText.text = "Score : " + score.ToString();
         }
@@ -222,13 +223,11 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        CheckIfHighScore();
         SceneManager.LoadScene("ARTHUR");
     }
 
     public void BackToMenu()
     {
-        CheckIfHighScore();
         SceneManager.LoadScene("MainMenu");
     }
 
