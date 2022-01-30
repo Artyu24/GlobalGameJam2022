@@ -73,6 +73,6 @@ public class Player : MonoBehaviour
         }
         tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
         Debug.Log(health);
-        Destroy(Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity), 1f);
+        Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
     }
 }

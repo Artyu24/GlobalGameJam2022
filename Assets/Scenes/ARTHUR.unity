@@ -1031,10 +1031,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1108545490}
     - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
-      propertyPath: explosionEffectPrefab
-      value: 
-      objectReference: {fileID: 8401458270047327201, guid: cdc46792f0316ca4ba5e8f0aec02922b, type: 3}
-    - target: {fileID: 921249902841294399, guid: 6ab3e3dc78188434ebd26e61e872045a, type: 3}
       propertyPath: tabHeart.Array.data[0]
       value: 
       objectReference: {fileID: 907178855}
