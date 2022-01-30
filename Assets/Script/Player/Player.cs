@@ -24,6 +24,10 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private TrailRenderer trailRenderer;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource damageAudioSource;
+    [SerializeField] private AudioSource movementAudioSource;
+
     private void Start()
     {
         dir = transform.position;
@@ -34,10 +38,12 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.Instance.isGamePaused)
         {
+
             if (swipeControls.swipeLeft && !isLeft)
             {
+                if (OptionManager.instance.isSoundEffectEnabled)
+                    movementAudioSource.Play();
                 dir = leftPosition.transform.position;
-
                 isLeft = true;
                 Debug.Log("SWIPE LEFT");
                 GameManager.Instance.SwitchLine();
@@ -45,6 +51,8 @@ public class Player : MonoBehaviour
             }
             else if (swipeControls.swipeRight && isLeft)
             {
+                if (OptionManager.instance.isSoundEffectEnabled)
+                    movementAudioSource.Play();
                 dir = rightPosition.transform.position;
                 isLeft = false;
                 Debug.Log("SWIPE RIGHT");
@@ -85,6 +93,8 @@ public class Player : MonoBehaviour
         // Manage Health indicator
         if (health > 0)
         {
+            if (OptionManager.instance.isSoundEffectEnabled)
+                damageAudioSource.Play();
             if (health == 1)
             {
                 HealthIndicatorManager.instance.EnableHealthIndicator();
@@ -96,6 +106,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            damageAudioSource.Play();
             HealthIndicatorManager.instance.DisableHealthIndicator();
         }
 
@@ -110,7 +121,6 @@ public class Player : MonoBehaviour
         {
             tabHeart[health].GetComponent<Animator>().SetTrigger("Break");
         }
-        Debug.Log(health);
 
         // Create explosion effect
         Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);

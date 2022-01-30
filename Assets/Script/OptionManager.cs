@@ -9,10 +9,13 @@ public class OptionManager : MonoBehaviour
     public static OptionManager instance { get => _instance; }
 
     [Header("Component")] 
-    [SerializeField] private Button soundButton;
+    [SerializeField] private Button musiqueButton;
+    [SerializeField] private Button soundEffectButton;
     [SerializeField] private Button vibrationButton;
-    [SerializeField] private Sprite muteSprite;
-    [SerializeField] private Sprite unmuteSprite;
+    [SerializeField] private Sprite musiqueOFFSprite;
+    [SerializeField] private Sprite musiqueOnSprite;
+    [SerializeField] private Sprite seOnSprite;
+    [SerializeField] private Sprite seOffSprite;
     [SerializeField] private Sprite vibrationSprite;
     [SerializeField] private Sprite vibratioffSprite;
     [SerializeField] private GameObject cam;
@@ -29,6 +32,14 @@ public class OptionManager : MonoBehaviour
     {
         get { return _isVibrationEnabled; }
         set { _isVibrationEnabled = value; }
+    }
+
+    [SerializeField] private bool _isSoundEffectEnabled = true;
+
+    public bool isSoundEffectEnabled
+    {
+        get { return _isSoundEffectEnabled; }
+        set { _isSoundEffectEnabled = value; }
     }
 
     private bool _isInMainMenu;
@@ -50,25 +61,46 @@ public class OptionManager : MonoBehaviour
         SwitchVibration();
         isSoundEnable = PlayerPrefs.GetInt("isSoundEnable") == 1;
         SwitchSound();
+        isSoundEffectEnabled = PlayerPrefs.GetInt("isSoundEffectEnabled") == 1;
+        SwitchSoundEffect();
     }
 
-    public void SwitchSound()
+    public void SwitchSoundEffect()
     {
-        if (isSoundEnable)
+        if (isSoundEffectEnabled)
         {
             //enable sound
-            cam.GetComponent<AudioListener>().enabled = false;
-            isSoundEnable = false;
-            PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
-            soundButton.image.sprite = muteSprite;
+            isSoundEffectEnabled = false;
+            PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
+            soundEffectButton.image.sprite = seOffSprite;
+            Debug.Log(isSoundEffectEnabled + " " + PlayerPrefs.GetInt("isSoundEffectEnabled"));
         }
         else
         {
             //disable sound
-            cam.GetComponent<AudioListener>().enabled = true;
-            isSoundEnable = true; 
+            isSoundEffectEnabled = true; 
+            PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
+            soundEffectButton.image.sprite = seOnSprite;
+            Debug.Log(isSoundEffectEnabled + " " + PlayerPrefs.GetInt("isSoundEffectEnabled"));
+        }
+    }
+    public void SwitchSound()
+    {
+        if (isSoundEnable)
+        {
+            //disable sound
+            cam.GetComponent<AudioSource>().Pause();
+            isSoundEnable = false;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
-            soundButton.image.sprite = unmuteSprite;
+            musiqueButton.image.sprite = musiqueOFFSprite;
+        }
+        else
+        {
+            //enable sound
+            cam.GetComponent<AudioSource>().Play();
+            isSoundEnable = true;
+            PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
+            musiqueButton.image.sprite = musiqueOnSprite;
         }
     }
 
@@ -88,7 +120,6 @@ public class OptionManager : MonoBehaviour
             isVibrationEnabled = true;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
             vibrationButton.image.sprite = vibrationSprite;
-            Handheld.Vibrate();
         }
     }
 }
