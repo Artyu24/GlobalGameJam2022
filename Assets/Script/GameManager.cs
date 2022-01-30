@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Tableau des paternes")]
     [SerializeField] private PaternCube[] tabPatern;
-    private int lastPatern;
 
     [Header("Score")]
     private int score;
@@ -124,7 +123,6 @@ public class GameManager : MonoBehaviour
     private void PlayRandomPatern()
     {
         int random = Random.Range(0, tabPatern.Length);
-        lastPatern = random;
         tabPatern[random].ActivateCoroutine();
     }
 
