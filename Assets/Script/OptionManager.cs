@@ -112,7 +112,6 @@ public class OptionManager : MonoBehaviour
             isVibrationEnabled = false;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled ? 0 : 1);
             vibrationButton.image.sprite = vibratioffSprite;
-            Handheld.Vibrate();
         }
         else
         {
@@ -120,6 +119,7 @@ public class OptionManager : MonoBehaviour
             isVibrationEnabled = true;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
             vibrationButton.image.sprite = vibrationSprite;
+            Handheld.Vibrate();
         }
     }
 }
