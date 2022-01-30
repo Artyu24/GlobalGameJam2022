@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text defeatScoreText;
     [SerializeField] private Text defeatHighScoreText;
 
-
     private bool isPaternPlay;
     public bool GetIsPaternPlay { get { return isPaternPlay; } set { isPaternPlay = value; } }
 
@@ -89,8 +88,8 @@ public class GameManager : MonoBehaviour
         else
         {
             defeatPanel.SetActive(true);
-            defeatHighScoreText.text = PlayerPrefs.GetInt("High Score").ToString();
-            defeatScoreText.text = score.ToString();
+            defeatHighScoreText.text = "High Score : " + PlayerPrefs.GetInt("High Score").ToString();
+            defeatScoreText.text = "Score : " + score.ToString();
         }
     }
 
