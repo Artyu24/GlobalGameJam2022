@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
@@ -20,10 +21,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] tabHeart = new GameObject[3];
 
     [Header("Effects"), SerializeField] private GameObject explosionEffectPrefab;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private TrailRenderer trailRenderer;
     
     private void Start()
     {
         dir = transform.position;
+        
+        // Get shared material
     }
 
     private void Update()
@@ -35,6 +40,7 @@ public class Player : MonoBehaviour
             isLeft = true;
             Debug.Log("SWIPE LEFT");
             GameManager.Instance.SwitchLine();
+            UpdateTrailColor();
         }
         else if (swipeControls.swipeRight && isLeft)
         {
@@ -42,6 +48,7 @@ public class Player : MonoBehaviour
             isLeft = false;
             Debug.Log("SWIPE RIGHT");
             GameManager.Instance.SwitchLine();
+            UpdateTrailColor();
         }
 
         else if (swipeControls.tap && !swipeControls.isDragging)
@@ -56,6 +63,15 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
             GameManager.Instance.isPlayerAlive = false;
         }
+
+    }
+
+    void UpdateTrailColor()
+    {
+        // Update trail color with the current color of the player
+        Color color = spriteRenderer.sharedMaterial.GetColor("_GlowColor");
+        trailRenderer.startColor = color;
+        trailRenderer.endColor = color;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
