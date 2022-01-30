@@ -114,9 +114,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(WhiteCubeTab().Length == 0 || BlackCubeTab().Length == 0)
-                ResetCube();
-
             defeatPanel.SetActive(true);
             CheckIfHighScore();
             defeatHighScoreText.text = "High Score : " + PlayerPrefs.GetInt("High Score").ToString();
@@ -167,28 +164,11 @@ public class GameManager : MonoBehaviour
     private void SpawnWhiteCube(GameObject spawnPosition)
     {
         GameObject _whiteCube = Instantiate(whiteCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
-        if (isWhiteSide)
-            _whiteCube.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void SpawnBlackCube(GameObject spawnPosition)
     {
         GameObject _blackCube = Instantiate(blackCube, spawnPosition.transform.position, Quaternion.identity, spawnPosition.transform);
-        if (!isWhiteSide)
-            _blackCube.GetComponent<BoxCollider2D>().enabled = false;
-    }
-
-    public void ResetCube()
-    {
-        foreach (GameObject whiteCube in WhiteCubeTab())
-        {
-            Destroy(whiteCube.gameObject);
-        }
-
-        foreach (GameObject blackCube in BlackCubeTab())
-        {
-            Destroy(blackCube.gameObject);
-        }
     }
 
     private void RandomColor()
