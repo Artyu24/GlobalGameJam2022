@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        Time.timeScale = 1;
 
         scoreMultiplier = 1;
         scoreText.text = score.ToString();
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 0;
             defeatPanel.SetActive(true);
             CheckIfHighScore();
             defeatHighScoreText.text = "High Score : " + PlayerPrefs.GetInt("High Score").ToString();
