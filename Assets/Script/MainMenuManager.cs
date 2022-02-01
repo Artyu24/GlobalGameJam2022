@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private string levelToLoad;
     [SerializeField] private GameObject créditsPanel;
+    [SerializeField] private GameObject howToPlayPanel;
 
     public void Play()
     {
@@ -23,6 +24,18 @@ public class MainMenuManager : MonoBehaviour
         else
         {
             créditsPanel.SetActive(true);
+        }
+    }
+
+    public void HowToPlay()
+    {
+        if (howToPlayPanel.activeInHierarchy)
+        {
+            howToPlayPanel.SetActive(false);
+        }
+        else
+        {
+            howToPlayPanel.SetActive(true);
         }
     }
 }
