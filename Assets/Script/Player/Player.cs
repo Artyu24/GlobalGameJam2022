@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
                 Debug.Log("SWIPE LEFT");
                 GameManager.Instance.SwitchLine();
                 UpdateTrailColor();
+                PlayerPrefs.SetInt("Number Of Swipe", (PlayerPrefs.GetInt("Number Of Swipe") + 1));
             }
             else if (swipeControls.swipeRight && isLeft)
             {
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
                 Debug.Log("SWIPE RIGHT");
                 GameManager.Instance.SwitchLine();
                 UpdateTrailColor();
+                PlayerPrefs.SetInt("Number Of Swipe", (PlayerPrefs.GetInt("Number Of Swipe") + 1));
             }
         }
 
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
             GameManager.Instance.isPlayerAlive = false;
+            GameManager.Instance.isSuccesAplly = false;
         }
 
     }

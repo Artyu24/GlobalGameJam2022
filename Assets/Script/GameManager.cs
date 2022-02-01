@@ -74,6 +74,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text defeatHighScoreText;
     private bool _isPlayerAlive = true;
 
+    [Header("Succes")]
+    public bool isSuccesAplly;
+
     public bool isGamePaused = false;
 
     public bool isPlayerAlive
@@ -143,7 +146,7 @@ public class GameManager : MonoBehaviour
             defeatPanel.SetActive(true);
             CheckIfHighScore();
             defeatHighScoreText.text = "High Score : " + PlayerPrefs.GetInt("High Score").ToString();
-            defeatScoreText.text = "Score : " + score.ToString();
+            defeatScoreText.text = "Score : " + score;
         }
     }
 
@@ -289,6 +292,15 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("High Score") < score)
         {
             PlayerPrefs.SetInt("High Score", score);
+        }
+
+        if (!isSuccesAplly)
+        {
+            int _totalScore = PlayerPrefs.GetInt("Total Score") + score;
+            PlayerPrefs.SetInt("Total Score", _totalScore);
+            PlayerPrefs.SetInt("Number Of Game Played", (PlayerPrefs.GetInt("Number Of Game Played") + 1));
+            Debug.Log(PlayerPrefs.GetInt("Number Of Game Played") + "1 = " + ((PlayerPrefs.GetInt("Number Of Game Played") + 1)));
+            isSuccesAplly = true;
         }
     }
 

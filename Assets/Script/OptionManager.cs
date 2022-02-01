@@ -73,7 +73,6 @@ public class OptionManager : MonoBehaviour
             isSoundEffectEnabled = false;
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
             soundEffectButton.image.sprite = seOffSprite;
-            Debug.Log(isSoundEffectEnabled + " " + PlayerPrefs.GetInt("isSoundEffectEnabled"));
         }
         else
         {
@@ -81,7 +80,6 @@ public class OptionManager : MonoBehaviour
             isSoundEffectEnabled = true; 
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
             soundEffectButton.image.sprite = seOnSprite;
-            Debug.Log(isSoundEffectEnabled + " " + PlayerPrefs.GetInt("isSoundEffectEnabled"));
         }
     }
     public void SwitchSound()
@@ -119,7 +117,9 @@ public class OptionManager : MonoBehaviour
             isVibrationEnabled = true;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
             vibrationButton.image.sprite = vibrationSprite;
-            Handheld.Vibrate();
+            /*Handheld.Vibrate();*/
         }
     }
+
+
 }
