@@ -26,7 +26,7 @@ public class SuccesManager : MonoBehaviour
     [Header("Number Of Swipe")]
     [SerializeField] private TMP_Text NumberOfSwipeText;
     [SerializeField] private GameObject NumberOfSwipeProgressionBar;
-    private int[] NumberOfSwipeSucces = {0,5000,10000,20000,40000,50000,100000,150000,200000,300000,500000,700000,1500000,2000000};
+    private int[] NumberOfSwipeSucces = {0,50,100,250,500,1000,2500,5000,10000,20000,40000,50000,100000,150000,200000,300000,500000,700000,1500000,2000000};
 
     public void OpenSuccesPanel()
     {
